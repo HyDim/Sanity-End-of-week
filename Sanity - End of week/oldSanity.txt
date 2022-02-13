@@ -1,0 +1,124 @@
+var score = 0;
+var scorePerSecond = 0;
+var clickingPower = 100;
+var cursorCost = 15;
+var cursors = 0;
+var drugCost = 30;
+var drugs = 0;
+var gaemCost = 100;
+var gaems = 0;
+
+function buyCursor() {
+  if (score >= cursorCost) {
+    score = score - cursorCost;
+    cursors = cursors + 1;
+    cursorCost = Math.round(cursorCost * 1.15);
+    
+    document.getElementById("cursorCost").innerHTML = cursorCost;
+    document.getElementById("cursors").innerHTML = cursors;
+    document.getElementById("score").innerHTML = score;
+    updateScorePerSecond()
+  }
+}
+
+function buyDrug() {
+  if (score >= drugCost) {
+    score = score - drugCost;
+    drugs = drugs + 1;
+    drugCost = Math.round(drugCost * 1.15);
+    
+    document.getElementById("drugCost").innerHTML = drugCost;
+    document.getElementById("drugs").innerHTML = drugs;
+    document.getElementById("score").innerHTML = score;
+    updateScorePerSecond()
+  }
+}
+
+function buyGaem() {
+  if (score >= gaemCost) {
+    score = score - gaemCost;
+    gaems = gaems + 1;
+    gaemCost = Math.round(gaemCost * 1.15);
+    
+    document.getElementById("gaemCost").innerHTML = gaemCost;
+    document.getElementById("gaems").innerHTML = gaems;
+    document.getElementById("score").innerHTML = score;
+    updateScorePerSecond()
+  }
+}
+
+function updateScorePerSecond() {
+  scorePerSecond = cursors + drugs * 5 + gaems * 10;
+  document.getElementById("scorePerSecond").innerHTML = scorePerSecond;
+}
+
+function loadGame() {
+  var savedGame = JSON.parse(localStorage.getItem("gameSave"));
+  if(typeof savedGame.score !== "undefined") score = savedGame.score;
+  if(typeof savedGame.clickingPower !== "undefined") clickingPower = savedGame.clickingPower;
+  if(typeof savedGame.cursorCost !== "undefined") cursorCost = savedGame.cursorCost;
+  if(typeof savedGame.cursors !== "undefined") cursors = savedGame.cursors;
+  if(typeof savedGame.drugCost !== "undefined") drugCost = savedGame.drugCost;
+  if(typeof savedGame.drugs !== "undefined") drugs = savedGame.drugs;
+  if(typeof savedGame.gaemCost !== "undefined") gaemCost = savedGame.gaemCost;
+  if(typeof savedGame.gaems !== "undefined") gaems = savedGame.gaems;
+}
+
+function saveGame() {
+  var gameSave = {
+    score: score,
+    clickingPower: clickingPower,
+    cursorCost: cursorCost,
+    cursors: cursors,
+    drugCost: drugCost,
+    drugs: drugs,
+    gaemCost: gaemCost,
+    gaems: gaems
+  };
+  localStorage.setItem("gameSave", JSON.stringify(gameSave));
+};
+
+function resetGame() {
+  if(confirm("U sure abt that Bossman?")) {
+    var gameSave = {};
+    localStorage.setItem("gameSave", JSON.stringify(gameSave));
+    location.reload();
+  }
+};
+
+window.onload = function() {
+  loadGame();
+  updateScorePerSecond();
+  document.getElementById("cursorCost").innerHTML = cursorCost;
+  document.getElementById("cursors").innerHTML = cursors;
+  document.getElementById("score").innerHTML = score;
+  document.getElementById("drugCost").innerHTML = drugCost;
+  document.getElementById("drugs").innerHTML = drugs;
+  document.getElementById("gaemCost").innerHTML = gaemCost;
+  document.getElementById("gaems").innerHTML = gaems;
+};
+
+function addToScore(amount) {
+  score += amount;
+  document.getElementById("score").innerHTML = score;
+}
+
+setInterval(function() {
+  score = score + cursors;
+  score = score + drugs * 5;
+  score = score + gaems * 10;
+  document.getElementById("score").innerHTML = score;
+  
+  document.title = score + "Sanity - End of week";
+}, 1000);
+
+setInterval(function() {
+  saveGame();
+}, 30000);
+
+document.addEventListener("keydown", function(event) {
+  if(event.ctrlKey && event.which == 83) {
+    event.preventDefault();
+    saveGame();
+  }
+}, false);

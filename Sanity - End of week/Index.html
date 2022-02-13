@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<HTML>
+    <head>
+      <title>End of week</title>
+      <link rel="stylesheet" href="main.css">
+      <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+      <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+      <script>
+        function addDarkmodeWidget() {
+          new Darkmode().showWidget();
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+      </script>
+    </head>
+    <body>
+      <div class="container-fluid">
+      <div class="sectionLeft">
+        <div class="mainSection">
+          <button id="visit">Go out</button>
+          <center>
+          <div class="scoreContainer unselectable">
+          <span id="score">0</span> Sanity<br>
+          <span id="scorePerSecond">0</span> Sanity per second
+          </div><br>
+          <div class="clickerContainer unselectable">
+            <img class="img-responsive" src="https://i.pinimg.com/736x/eb/ec/2c/ebec2c6502f99116bbfcd7bcc2f226f1--funny-friday-friday-funnies.jpg" id="clicker"></img>
+          </div>
+          </center>
+        </div>
+
+        <div class="bossSection">
+          <button id="return">Rest</button>
+          <center>
+            <img id="boss" src="https://www.for-sale.co.uk/sh-img/4e541e8b1cbb660d50a1e25bdb524736_chav%252Bscally_thumbnail.jpg"></img><br>
+            <p>Rando lad</p><br>
+            <div id="healthContainer">
+              <div id="healthText">nigga</div>
+              <progress id="health" value="100" max="100"></progress>
+              <div id="healthBackground"></div>
+            </div><br>
+            <button id="fightBoss" class="fightBoss">Fight Person</button>
+          </center>
+        </div>
+     </div>
+    
+  
+    <div class="sectionRight unselectable"> 
+      <div id="upgradeContainer"></div> 
+      <div id="shopContainer"></div>
+      <div id="achievementContainer"></div>
+    </div>
+    <footer class="sectionFooter">
+      <h5>Sanity: End of week</h5>
+    </footer>
+    <button onclick="resetGame()">Reset Game</button>
+    <script src="main.js"></script>
+  </div>
+  </body>
+  </HTML>

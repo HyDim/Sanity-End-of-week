@@ -1,0 +1,148 @@
+img {
+  height: 126px;
+  width: 126px;
+}
+
+.sectionLeft {
+  float: left;
+  width: 80%;
+}
+
+.sectionRight {
+  float: right;
+  width: 20%;
+}
+
+#Boss {
+  height: 200px;
+  width: auto;
+}
+
+#healthContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+#healthText {
+  display: grid;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  z-index: 10;
+  font-weight: bold;
+  color: black;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+}
+
+#health {
+  display: grid;
+  background-color: #aa0000;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  width: 100%;
+  z-index: 9;
+}
+
+#healthBackground {
+  display: grid;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  background-color: #b5b5b5;
+}
+
+.bossSection {
+  display: none;
+}
+
+.scoreContainer {
+  background-color: rgb(238, 238, 238);
+  width: 50%;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.clickerContainer img {
+  height: 200px;
+  width: auto;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.clickerContainer img:hover {
+  transform: scale(1.1);
+}
+
+.clickerContainer img:active {
+  transform: scale(0.99);
+}
+
+.shopButton {
+  background-color: #b5b5b5;
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.shopButton:hover {
+  background-color: #c7c7c7;
+  transition: all 0.2s ease-in-out;
+}
+
+.shopButton #image {
+  width: 25%;
+}
+
+.shopButton img {
+  height: 64px;
+  width: 64px;
+}
+
+.shopButton #nameAndCost p {
+  margin: 0px;
+  width: 60%;
+}
+
+.shopButton #nameAndCost p:first-of-type {
+  font-size: 24px;
+}
+
+.shopButton #amount {
+  font-size: 48px;
+  color: #595959;
+  font-family: roboto;
+  width: 15%;
+}
+
+.unselectable {
+  user-select: none;
+}
+
+#upgradeContainer {
+  background-color: #b5b5b5;
+  border-radius: 10px;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+#upgradeContainer img {
+  background-color: #a5a5a5;
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+  margin: 5px;
+  height: 52px;
+  width: 52px;
+}
+
+#upgradeContainer img:hover {
+  background-color: #c5c5c5;
+  transition: all 0.2s ease-in-out;
+}
+
+#achievementContainer img {
+  height: 64px;
+  width: 64px;
+}
